@@ -1,0 +1,6 @@
+/* Move all CSS content to this file */
+:root {
+  --primary: #2c3e50;
+  --secondary: #3498db;
+  /* ... rest of CSS ... */
+} 

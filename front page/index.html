@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Lord</title>
+    <!-- TailwindCSS CDN -->
+   <link rel="stylesheet" href="index.css">
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Google Font for Housing Lord theme -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- GSAP Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <img class="logo" src="logo.jpg" alt="" srcset="">
+    <!-- Add Font Awesome for the toggle icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Update the html and body styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            overflow-y: auto !important; /* Force vertical scrolling to always be enabled */
+            min-height: 100vh;
+            background-color: #000;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        /* Logo */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 120px;
+            height: 120px;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: brightness(1.2);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Responsive logo styles */
+        @media (max-width: 1024px) {
+            .logo {
+                width: 100px;
+                height: 100px;
+                top: 15px;
+                left: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                width: 80px;
+                height: 80px;
+                top: 10px;
+                left: 10px;
+                animation: float 2.5s ease-in-out infinite;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                width: 60px;
+                height: 60px;
+                top: 8px;
+                left: 8px;
+                animation: float 2s ease-in-out infinite;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #000;
+            background-image: linear-gradient(135deg, #000, #1a1a1a);
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden; /* Prevents scrollbars during animations */
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #FFD700;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0; /* Start invisible for GSAP animation */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 2rem;
+            opacity: 0; /* Start invisible for GSAP animation */
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            opacity: 0; /* For GSAP animation */
+            margin-top: 2rem;
+        }
+
+        .hero-btn {
+            background-color: #FFD700;  /* Same gold background as inquire button */
+            color: #000;  /* Black text like inquire button */
+            padding: 0.8rem 1.5rem;  /* Same padding as inquire button */
+            border: none;  /* No border like inquire button */
+            border-radius: 25px;  /* Same border radius */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;  /* Bold text like inquire button */
+            min-width: 200px;
+        }
+
+        .hero-btn:hover {
+            transform: scale(1.05);  /* Same hover effect as inquire button */
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);  /* Same shadow effect */
+        }
+
+        /* Make buttons stack on mobile */
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 80%;
+                max-width: 300px;
+            }
+            
+            .hero-btn {
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* About Section */
+        .about {
+            background-color: #1a1a1a;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .about h2 {
+            text-align: center;
+            color: #FFD700;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: #1a1a1a;  /* Added background color */
+            padding: 1rem 0;  /* Added padding */
+            border-radius: 8px;  /* Added rounded corners */
+            width: 80%;  /* Make it not full width */
+            margin-left: auto;  /* Center the heading */
+            margin-right: auto;  /* Center the heading */
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);  /* Add subtle golden glow */
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        /* Update showcase section */
+        .showcase {
+            padding: 4rem 0 2rem 0;
+            background-color: #000;
+            margin-bottom: 0;
+            min-height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .property-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .property-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .property-card:hover .property-image img {
+            transform: scale(1.05);
+        }
+
+        .property-info {
+            padding: 1.5rem;
+            background: linear-gradient(to bottom, #1a1a1a, #000);
+            position: relative;
+            z-index: 1;
+        }
+
+        .property-info h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .property-info p {
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        .book-now, .inquire-btn, .explore-btn {
+            background-color: #FFD700;
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-now:hover, .inquire-btn:hover, .explore-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .book-now::before, .inquire-btn::before, .explore-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .book-now:hover::before, .inquire-btn:hover::before, .explore-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+
+        .cta-section h2 {
+            color: #FFD700;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            color: #ddd;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Update footer styles */
+        .footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            width: 100%;
+            position: relative; /* Change from fixed to relative */
+        }
+
+        /* Navigation Styles */
+        .main-nav {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 100;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        .main-nav a:hover {
+            color: #FFD700;
+        }
+
+        .nav-button {
+            background-color: #FFD700;
+            color: #000;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Toggle Menu Button */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            color: #FFD700;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                padding: 80px 2rem 2rem;
+            }
+
+            .main-nav.active {
+                display: block;
+                animation: slideIn 0.3s ease-out;
+            }
+
+            @keyframes slideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .main-nav li {
+                width: 100%;
+                text-align: center;
+                opacity: 0;
+                animation: fadeIn 0.5s ease-out forwards;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .main-nav li:nth-child(1) { animation-delay: 0.1s; }
+            .main-nav li:nth-child(2) { animation-delay: 0.2s; }
+            .main-nav li:nth-child(3) { animation-delay: 0.3s; }
+            .main-nav li:nth-child(4) { animation-delay: 0.4s; }
+            .main-nav li:nth-child(5) { animation-delay: 0.5s; }
+            .main-nav li:nth-child(6) { animation-delay: 0.6s; }
+
+            .main-nav a {
+                font-size: 1.2rem;
+                display: block;
+                padding: 1rem;
+            }
+
+            .nav-button {
+                width: 100%;
+                max-width: 200px;
+                margin-top: 1rem;
+            }
+
+            /* Toggle Icon Animation */
+            .menu-toggle.active i {
+                transform: rotate(90deg);
+            }
+        }
+
+        /* Add a back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #FFD700;
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        .tenant-path h3, .owner-path h3 {
+            text-align: center-left;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #FFD700;
+            padding-left: 1rem;  /* Add some padding from the left */
+        }
+
+        .how-it-works {
+            padding: 4rem 0;
+            background: #111111;  /* Changed from #000 to #111111 for slightly lighter dark */
+            color: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #FFD700;
+            background: #1a1a1a;  /* Added background for the heading */
+            padding: 1rem 0;  /* Added padding around the heading */
+            border-radius: 8px;  /* Optional: adds rounded corners */
+        }
+
+        .golden-text {
+            color: #FFD700 !important;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .faq-section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 215, 0, 0.12);
+        }
+
+        /* Base responsive styles */
+        html {
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 12px;
+            }
+        }
+
+        /* Hero Section Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+                padding: 0 1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 90%;
+                max-width: 300px;
+                gap: 1rem;
+            }
+
+            .hero-btn {
+                width: 100%;
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        /* Navigation Responsive */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                padding: 2rem;
+            }
+
+            .main-nav.active {
+                display: block;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 101;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
+
+        /* Property Grid Responsive */
+        @media (max-width: 1024px) {
+            .property-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .property-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .property-card {
+                margin: 0 1rem;
+            }
+
+            .property-image {
+                height: 200px;
+            }
+
+            .property-info {
+                padding: 1rem;
+            }
+
+            .property-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .property-info p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* About Section Responsive */
+        @media (max-width: 768px) {
+            .about h2 {
+                font-size: 2rem;
+                width: 90%;
+                margin: 0 auto 2rem;
+            }
+
+            .about-columns {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .about-point {
+                padding: 0.8rem;
+            }
+
+            .about-point p {
+                font-size: 0.9rem;
+            }
+
+            .icon {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* FAQ Section Responsive */
+        @media (max-width: 768px) {
+            .faq-section {
+                padding: 2rem 1rem;
+                margin: 0 1rem;
+            }
+
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+
+            .faq-answer p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Contact Section Responsive */
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-item {
+                font-size: 0.9rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .submit-btn {
+                width: 100%;
+                padding: 0.8rem;
+            }
+        }
+
+        /* Sidebar Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .sidebar h2 {
+                font-size: 1.5rem;
+            }
+
+            .detailed-section {
+                padding: 1rem;
+            }
+
+            .detailed-section h4 {
+                font-size: 1.1rem;
+            }
+
+            .detailed-section ul li {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* CTA Section Responsive */
+        @media (max-width: 768px) {
+            .cta-section {
+                padding: 2rem 1rem;
+                margin: 1rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-section p {
+                font-size: 0.9rem;
+            }
+
+            .explore-btn {
+                width: 100%;
+                padding: 0.8rem;
+            }
+        }
+
+        /* Footer Responsive */
+        @media (max-width: 768px) {
+            .footer {
+                padding: 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* General Responsive Utilities */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                padding: 0.8rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            button {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) {
+            .property-card:hover,
+            .about-point:hover,
+            .faq-item:hover {
+                transform: none;
+            }
+
+            .book-now:hover,
+            .inquire-btn:hover,
+            .explore-btn:hover {
+                transform: none;
+            }
+        }
+
+        /* High-DPI Screen Optimizations */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .property-image img {
+                image-rendering: -webkit-optimize-contrast;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1 id="hero-title">Find Your Dream Rental Home or List Your Property – Seamlessly & Securely!</h1>
+        <p id="hero-subtitle">Odisha's most trusted rental service connecting house owners with verified tenants. Simple, transparent, and hassle-free rentals!</p>
+        <div class="hero-buttons">
+            <button id="find-home-btn" class="hero-btn">🔎 Find a Home</button>
+            <button id="list-property-btn" class="hero-btn">🏠 List Your Property</button>
+        </div>
+    </section>
+    <!-- Hero Image Section -->
+    <section class="hero-image-section">
+        <div class="hero-image-container" data-aos="fade-up">
+            <img src="hero_image.jpeg" alt="Luxury Housing" class="hero-image">
+            <div class="hero-image-overlay">
+                <h2>Experience Luxury Living</h2>
+                <p>Discover properties that redefine modern comfort and elegance</p>
+            </div>
+        </div>
+        <style>
+            .hero-image-section {
+                width: 100%;
+                height: 100vh;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .hero-image-container {
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+
+            .hero-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+
+            .hero-image-container:hover .hero-image {
+                transform: scale(1.05);
+            }
+
+            .hero-image-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                text-align: center;
+            }
+
+            .hero-image-overlay h2 {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+                color: #FFD700;
+                text-transform: uppercase;
+            }
+
+            .hero-image-overlay p {
+                font-size: 1.5rem;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+        </style>
+    </section>
+    <br>
+    <br>
+
+    <!-- How it works section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works?</h2>
+            
+            <div class="process-map">
+                <div class="tenant-path">
+                    <h3>For Tenants</h3>
+                    <div class="steps">
+                        <div class="step" data-aos="fade-right">
+                            <div class="step-icon">🏡</div>
+                            <div class="step-content">
+                                <h4>Step 1</h4>
+                                <p>Browse verified properties</p>
+                            </div>
+                            <div class="connector"></div>
+                        </div>
+    
+                        <div class="step" data-aos="fade-right" data-aos-delay="100">
+                            <div class="step-icon">📞</div>
+                            <div class="step-content">
+                                <h4>Step 2</h4>
+                                <p>Connect with property owners</p>
+                            </div>
+                            <div class="connector"></div>
+                        </div>
+    
+                        <div class="step" data-aos="fade-right" data-aos-delay="200">
+                            <div class="step-icon">✅</div>
+                            <div class="step-content">
+                                <h4>Step 3</h4>
+                                <p>Complete legal formalities</p>
+                            </div>
+                            <div class="connector"></div>
+                        </div>
+    
+                        <div class="step" data-aos="fade-right" data-aos-delay="300">
+                            <div class="step-icon">🎉</div>
+                            <div class="step-content">
+                                <h4>Step 4</h4>
+                                <p>Move in stress-free</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="owner-path">
+                    <h3>For Owners</h3>
+                    <div class="steps">
+                        <div class="step" data-aos="fade-left">
+                            <div class="step-icon">📌</div>
+                            <div class="step-content">
+                                <h4>Step 1</h4>
+                                <p>List your property</p>
+                            </div>
+                            <div class="connector"></div>
+                        </div>
+    
+                        <div class="step" data-aos="fade-left" data-aos-delay="100">
+                            <div class="step-icon">🔍</div>
+                            <div class="step-content">
+                                <h4>Step 2</h4>
+                                <p>Get tenant verification</p>
+                            </div>
+                            <div class="connector"></div>
+                        </div>
+    
+                        <div class="step" data-aos="fade-left" data-aos-delay="200">
+                            <div class="step-icon">💰</div>
+                            <div class="step-content">
+                                <h4>Step 3</h4>
+                                <p>Set the best rental price</p>
+                            </div>
+                            <div class="connector"></div>
+                        </div>
+    
+                        <div class="step" data-aos="fade-left" data-aos-delay="300">
+                            <div class="step-icon">🤝</div>
+                            <div class="step-content">
+                                <h4>Step 4</h4>
+                                <p>Rent out stress-free</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="cta-button" data-aos="fade-up">
+                <button class="start-journey-btn">Start Your Journey Today!</button>
+            </div>
+        </div>
+    
+        <style>
+            .how-it-works {
+                padding: 4rem 0;
+                background: #111111;  /* Changed from #000 to #111111 for slightly lighter dark */
+                color: #fff;
+            }
+    
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 1rem;
+            }
+    
+            .section-title {
+                text-align: center;
+                font-size: 2.5rem;
+                margin-bottom: 3rem;
+                color: #FFD700;
+                background: #1a1a1a;  /* Added background for the heading */
+                padding: 1rem 0;  /* Added padding around the heading */
+                border-radius: 8px;  /* Optional: adds rounded corners */
+            }
+    
+            .process-map {
+                display: flex;
+                justify-content: space-between;
+                gap: 2rem;
+                margin-bottom: 3rem;
+            }
+    
+            .tenant-path, .owner-path {
+                flex: 1;
+            }
+    
+            h3 {
+                text-align: center;
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+                color: #FFD700;
+            }
+    
+            .steps {
+                position: relative;
+            }
+    
+            .step {
+                display: flex;
+                align-items: center;
+                margin-bottom: 2rem;
+                position: relative;
+                padding: 1rem;
+                border-radius: 10px;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+    
+            .step-icon {
+                font-size: 2.5rem;
+                margin-right: 1.5rem;
+                background: rgba(255, 215, 0, 0.1);
+                padding: 1.2rem;
+                border-radius: 50%;
+                transition: all 0.4s ease;
+            }
+    
+            .step-content {
+                flex: 1;
+                transition: all 0.4s ease;
+            }
+    
+            .step-content h4 {
+                color: #FFD700;
+                margin-bottom: 0.5rem;
+                font-size: 1.8rem;
+                transition: transform 0.3s ease;
+                font-weight: 600;
+            }
+    
+            .step-content p {
+                font-size: 1.3rem;
+                transition: transform 0.3s ease;
+                line-height: 1.4;
+                margin-top: 0.5rem;
+            }
+    
+            /* New hover animations */
+            .step:hover {
+                background: rgba(255, 215, 0, 0.05);
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1);
+            }
+    
+            .step:hover .step-icon {
+                transform: scale(1.2);
+                background: rgba(255, 215, 0, 0.2);
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            }
+    
+            .step:hover .step-content h4 {
+                transform: translateX(10px);
+                color: #FFF;
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            }
+    
+            .step:hover .step-content p {
+                transform: translateX(10px);
+                color: #FFD700;
+            }
+    
+            .step:hover .connector {
+                background: linear-gradient(to bottom, #FFD700, transparent);
+                width: 3px;
+                box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            }
+    
+            .connector {
+                position: absolute;
+                left: 2.5rem;
+                bottom: -2rem;
+                width: 2px;
+                height: 2rem;
+                background: #FFD700;
+                transition: all 0.4s ease;
+            }
+    
+            .cta-button {
+                text-align: center;
+            }
+    
+            .start-journey-btn {
+                background: #FFD700;
+                color: #000;
+                border: none;
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+                border-radius: 30px;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+    
+            .start-journey-btn:hover {
+                transform: translateY(-3px);
+            }
+    
+            @media (max-width: 768px) {
+                .process-map {
+                    flex-direction: column;
+                }
+                
+                .tenant-path, .owner-path {
+                    margin-bottom: 2rem;
+                }
+            }
+        </style>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about" id="about-section">
+        <h2>Why Choose Housing Lord? </h2>
+        <div class="about-container">
+            <div class="about-columns">
+                <div class="about-left" data-aos="fade-right">
+                    <div class="about-point">
+                        <span class="icon">🚀</span>
+                        <p>Fast & Transparent Rentals – No hidden fees, clear process</p>
+                    </div>
+                    <div class="about-point">
+                        <span class="icon">🤝</span>
+                        <p>65+ Happy House Owners – Trusted by property owners</p>
+                    </div>
+                    <div class="about-point">
+                        <span class="icon">🔍</span>
+                        <p>Quick Tenant Placement – Verified listings & screening</p>
+                    </div>
+                </div>
+                <div class="about-right" data-aos="fade-left">
+                    <div class="about-point">
+                        <span class="icon">📜</span>
+                        <p>Legal Rental Agreements – Hassle-free documentation</p>
+                    </div>
+                    <div class="about-point">
+                        <span class="icon">💰</span>
+                        <p>Affordable & Fixed Service Fee – Best rates guaranteed</p>
+                    </div>
+                    <div class="about-point">
+                        <span class="icon">☎️</span>
+                        <p>Dedicated Customer Support – 24/7 assistance for seamless renting experience</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-cta" data-aos="fade-up">
+                <button class="cta-btn">Join Housing Lord – Simplify Your Rental Journey!</button>
+            </div>
+        </div>
+
+        <style>
+            .about {
+                padding: 4rem 0;
+                background: #111111;
+                color: #fff;
+            }
+
+            .about h2 {
+                text-align: center;
+                color: #FFD700;
+                font-size: 2.5rem;
+                margin-bottom: 3rem;
+                background: #1a1a1a;  /* Added background color */
+                padding: 1rem 0;  /* Added padding */
+                border-radius: 8px;  /* Added rounded corners */
+                width: 80%;  /* Make it not full width */
+                margin-left: auto;  /* Center the heading */
+                margin-right: auto;  /* Center the heading */
+                box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);  /* Add subtle golden glow */
+            }
+
+            .about-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .about-columns {
+                display: flex;
+                justify-content: space-between;
+                gap: 4rem;
+                margin-bottom: 3rem;
+            }
+
+            .about-left, .about-right {
+                flex: 1;
+            }
+
+            .about-point {
+                display: flex;
+                align-items: center;
+                margin-bottom: 2rem;
+                padding: 1rem;
+                background: rgba(255, 215, 0, 0.1);
+                border-radius: 10px;
+                transition: transform 0.3s ease;
+            }
+
+            .about-point:hover {
+                transform: translateY(-5px);
+                background: rgba(255, 215, 0, 0.2);
+            }
+
+            .icon {
+                font-size: 2rem;
+                margin-right: 1rem;
+            }
+
+            .about-point p {
+                font-size: 1.1rem;
+                line-height: 1.5;
+            }
+
+            .about-cta {
+                text-align: center;
+            }
+
+            .cta-btn {
+                background: #FFD700;
+                color: #000;
+                border: none;
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
+                border-radius: 30px;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+
+            .cta-btn:hover {
+                transform: translateY(-3px);
+            }
+
+            @media (max-width: 768px) {
+                .about-columns {
+                    flex-direction: column;
+                    gap: 2rem;
+                }
+            }
+        </style>
+    </section>
+
+    <!-- After the about section, add this new showcase section -->
+     
+    <section class="showcase" id="properties">
+        <div class="container">
+            <div class="property-grid">
+                <!-- Luxury Modern Villa Card -->
+                <div class="property-card" data-aos="fade-up">
+                    <div class="property-image">
+                        <img src="propertycard1.webp" alt="Modern House">
+                        <button class="book-now">Book Now</button>
+                    </div>
+                    <div class="property-info">
+                        <h3>Luxury Modern Villa</h3>
+                        <p>Experience elegance with our meticulously curated rental properties. Elevate your living experience and find your perfect home.</p>
+                    </div>
+                </div>
+                <!-- Pricing & Transparency Card -->
+                <div class="property-card pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="property-image pricing-header">
+                        <h3> Simple & Transparent Pricing</h3>
+                    </div>
+                    <div class="property-info">
+                        <div class="pricing-details">
+                            <h4>Service Fee Structure:</h4>
+                            <p style="color: #FFD700;">One month's rent split as:</p>
+                            <ul>
+                                <li>15 days' rent from tenant</li>
+                                <li>15 days' rent from owner</li>
+                            </ul>
+                            
+                            <h4>Additional Services:</h4>
+                            <ul>
+                                <li>📜 Rental Agreement Assistance</li>
+                                <li>🔍 Police Verification</li>
+                            </ul>
+                        </div>
+                        <button class="pricing-cta" onclick="togglePricingSidebar()">No Hidden Costs – Just Professional Service!</button>
+                    </div>
+                </div>
+
+                <!-- Pricing Sidebar -->
+                <div id="pricingSidebar" class="sidebar">
+                    <div class="sidebar-content">
+                        <button class="close-btn" onclick="togglePricingSidebar()">×</button>
+                        <h2>Detailed Pricing Information</h2>
+                        
+                        <div class="detailed-section">
+                            <h4>💰 Service Fee Breakdown</h4>
+                            <ul>
+                                <li class="golden-text"><span class="bullet">►</span> One month's rent split as:</li>
+                                <li><span class="bullet">►</span> 15 days' rent from tenant</li>
+                                <li><span class="bullet">►</span> 15 days' rent from owner</li>
+                                <li class="special"><span class="bullet">✓</span> No advance payment required</li>
+                                <li class="special"><span class="bullet">✓</span> Pay only after successful match</li>
+                            </ul>
+                        </div>
+
+                        <div class="detailed-section">
+                            <h4>📝 Documentation Services</h4>
+                            <ul>
+                                <li><span class="bullet">►</span> Professional rental agreement drafting</li>
+                                <li><span class="bullet">►</span> Legal consultation included</li>
+                                <li><span class="bullet">►</span> Digital document storage</li>
+                                <li><span class="bullet">►</span> Document registration support</li>
+                                <li><span class="bullet">►</span> Digital signature facility</li>
+                            </ul>
+                        </div>
+
+                        <div class="detailed-section">
+                            <h4>🔍 Verification Process</h4>
+                            <ul>
+                                <li><span class="bullet">►</span> Document collection assistance</li>
+                                <li><span class="bullet">►</span> Police verification processing</li>
+                                <li><span class="bullet">►</span> Background verification</li>
+                                <li><span class="bullet">►</span> Employment verification</li>
+                                <li><span class="bullet">►</span> Previous rental history check</li>
+                                <li><span class="bullet">►</span> Real-time status tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .pricing-card {
+                        background: rgba(255, 215, 0, 0.05);
+                        border: 1px solid rgba(255, 215, 0, 0.2);
+                    }
+
+                    .pricing-header {
+                        background: linear-gradient(45deg, #000, #222);
+                        padding: 2rem;
+                        text-align: center;
+                    }
+
+                    .pricing-header h3 {
+                        color: #FFD700;
+                        margin: 0;
+                    }
+
+                    .pricing-details {
+                        padding: 1rem;
+                    }
+
+                    .pricing-details h4 {
+                        color: #FFD700;
+                        margin: 1rem 0;
+                    }
+
+                    .pricing-details ul {
+                        list-style-type: none;
+                        padding-left: 1rem;
+                    }
+
+                    .pricing-details li {
+                        margin: 0.5rem 0;
+                        color: #fff;
+                    }
+
+                    .pricing-cta {
+                        background: #FFD700;
+                        color: #000;
+                        border: none;
+                        padding: 1rem 2rem;
+                        width: 100%;
+                        font-size: 1.1rem;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: transform 0.3s ease;
+                    }
+
+                    .pricing-cta:hover {
+                        transform: translateY(-3px);
+                    }
+
+                    .sidebar {
+                        position: fixed;
+                        right: -100%;
+                        top: 0;
+                        width: 400px;
+                        height: 100vh;
+                        background: #1a1a1a;
+                        padding: 2rem;
+                        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+                        transition: right 0.3s ease;
+                        z-index: 1000;
+                        overflow-y: auto;
+                    }
+
+                    .sidebar.active {
+                        right: 0;
+                    }
+
+                    .sidebar-content {
+                        color: #fff;
+                    }
+
+                    .sidebar h2 {
+                        color: #FFD700;
+                        font-size: 1.8rem;
+                        margin-bottom: 2rem;
+                        padding-bottom: 1rem;
+                        border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+                    }
+
+                    .close-btn {
+                        position: absolute;
+                        right: 1rem;
+                        top: 1rem;
+                        background: none;
+                        border: none;
+                        color: #FFD700;
+                        font-size: 2rem;
+                        cursor: pointer;
+                        transition: transform 0.3s ease;
+                    }
+
+                    .close-btn:hover {
+                        transform: rotate(90deg);
+                        color: #fff;
+                    }
+
+                    .detailed-section {
+                        margin: 2rem 0;
+                        padding: 1.5rem;
+                        background: rgba(255, 215, 0, 0.05);
+                        border-radius: 8px;
+                        border: 1px solid rgba(255, 215, 0, 0.1);
+                        transition: transform 0.3s ease;
+                    }
+
+                    .detailed-section:hover {
+                        transform: translateX(-5px);
+                        background: rgba(255, 215, 0, 0.08);
+                        border-color: rgba(255, 215, 0, 0.2);
+                    }
+
+                    .detailed-section h4 {
+                        color: #FFD700;
+                        margin-bottom: 1.5rem;
+                        font-size: 1.2rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                    }
+
+                    .detailed-section ul {
+                        list-style-type: none;
+                        padding-left: 0.5rem;
+                    }
+
+                    .detailed-section ul li {
+                        margin: 1rem 0;
+                        position: relative;
+                        padding-left: 1.5rem;
+                        line-height: 1.4;
+                        transition: transform 0.2s ease;
+                    }
+
+                    .detailed-section ul li:hover {
+                        transform: translateX(5px);
+                        color: #FFD700;
+                    }
+
+                    .detailed-section ul li.highlight {
+                        color: #FFD700;
+                        font-weight: bold;
+                        font-size: 1.1rem;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .detailed-section ul li.special {
+                        color: #98FB98;  /* Light green color for special points */
+                    }
+
+                    .bullet {
+                        color: #FFD700;
+                        margin-right: 0.5rem;
+                        font-weight: bold;
+                    }
+
+                    @media (max-width: 768px) {
+                        .sidebar {
+                            width: 100%;
+                        }
+
+                        .detailed-section {
+                            padding: 1rem;
+                        }
+                    }
+                </style>
+
+                <script>
+                    function togglePricingSidebar() {
+                        const sidebar = document.getElementById('pricingSidebar');
+                        sidebar.classList.toggle('active');
+                    }
+                </script>
+
+                <!-- Video Tour Card -->
+                <div class="property-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-container">
+                        <video autoplay muted loop>
+                            <source src="property-tour.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <!-- About Us Card -->
+                <div class="property-card about-card" id="about-housing-lord" data-aos="fade-up" data-aos-delay="300">
+                    <div class="property-image about-header">
+                        <h3>About Housing Lord</h3>
+                        <div class="logo-container">
+                            <img style="width: 9rem; height: 9rem;position: relative; top: -25px;background-color:black" src="logo.jpg" alt="Housing Lord Logo" class="about-logo">
+                        </div>
+                    </div>
+                    
+                    <div class="property-info">
+                        <div class="about-content">
+                            <h4 style="color: #FFD700;">Who We Are?</h4>
+                            <p style="text-align: left;">Housing Lord is Bhubaneswar's leading rental service, dedicated to making the rental process simple, professional, and stress-free for both tenants and property owners.</p>
+                            
+                            <div class="mission-statement">
+                                <h4 style="color: #FFD700;">Our Mission</h4>
+                                <p>"Simplifying Rentals, Enhancing Living."</p>
+                            </div>
+                            
+                            <button class="about-cta" onclick="toggleAboutSidebar()">Know More About Our Team</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Sidebar -->
+                <div id="aboutSidebar" class="sidebar">
+                    <div class="sidebar-content">
+                        <button class="close-btn" onclick="toggleAboutSidebar()">×</button>
+                        <h2>Our Leaders</h2>
+                        
+                        <div class="detailed-section founder-section">
+                            <div class="founder-card">
+                                <img src="ranjit.jpg" alt="Ranjit Kumar Panda" class="founder-img">
+                                <h4>Ranjit Kumar Panda</h4>
+                                <p>Real Estate & Hospitality Expert</p>
+                                <div class="contact-info">
+                                    <a href="https://linkedin.com/in/ranjit-panda" target="_blank">LinkedIn</a>
+                                    <p>📞 +91-XXXXXXXXXX</p>
+                                </div>
+                            </div>
+
+                            <div class="founder-card">
+                                <img src="pavitra.jpg" alt="Pavitra Kumar Panda" class="founder-img">
+                                <h4>Pavitra Kumar Panda</h4>
+                                <p>Finance & Pricing Specialist</p>
+                                <div class="contact-info">
+                                    <a href="https://linkedin.com/in/pavitra-panda" target="_blank">LinkedIn</a>
+                                    <p>📞 +91-XXXXXXXXXX</p>
+                                </div>
+                            </div>
+
+                            <div class="founder-card">
+                                <img src="pusparaj.jpg" alt="Pusparaj Sahu" class="founder-img">
+                                <h4>Pusparaj Sahu</h4>
+                                <p>Technology Expert</p>
+                                <div class="contact-info">
+                                    <a href="https://linkedin.com/in/pusparaj-sahu" target="_blank">LinkedIn</a>
+                                    <p>📞 +91-XXXXXXXXXX</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .about-card {
+                        background: rgba(255, 215, 0, 0.05);
+                    }
+
+                    .about-header {
+                        background: #1a1a1a;
+                        padding: 2rem;
+                        text-align: center;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 0.8rem;  /* Reduced from 1rem to 0.8rem */
+                    }
+
+                    .logo-container {
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .about-logo {
+                
+                        border-radius: 50%;
+                        object-fit: cover;
+                        border: 2px solid #FFD700; /* Reduced border from 3px to 2px to match smaller size */
+                        box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); /* Slightly reduced shadow */
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        background: #1a1a1a;
+                        padding: 2px; /* Reduced padding from 3px to 2px */
+                    }
+
+                    .about-logo:hover {
+                        transform: scale(1.05) rotate(5deg);
+                        box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+                    }
+
+                    .about-content {
+                        padding: 2rem;
+                        position: relative;
+                        background: rgba(255, 215, 0, 0.05);
+                        border-radius: 0 0 15px 15px;
+                    }
+
+                    .mission-statement {
+                        margin: 2rem 0;
+                        padding: 1rem;
+                        border-left: 4px solid #FFD700;
+                        background: rgba(255, 215, 0, 0.1);
+                    }
+
+                    .about-cta {
+                        background: #FFD700;
+                        color: #000;
+                        border: none;
+                        padding: 1rem 2rem;
+                        border-radius: 30px;
+                        cursor: pointer;
+                        width: 100%;
+                        margin-top: 1rem;
+                        font-weight: bold;
+                    }
+
+                    .founder-section {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 2rem;
+                    }
+
+                    .founder-card {
+                        background: rgba(255, 215, 0, 0.1);
+                        padding: 1.5rem;
+                        border-radius: 10px;
+                        text-align: center;
+                    }
+
+                    .founder-img {
+                        width: 150px;
+                        height: 150px;
+                        border-radius: 50%;
+                        margin-bottom: 1rem;
+                        border: 3px solid #FFD700;
+                    }
+
+                    .contact-info {
+                        margin-top: 1rem;
+                    }
+
+                    .contact-info a {
+                        color: #FFD700;
+                        text-decoration: none;
+                        display: block;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .contact-info a:hover {
+                        text-decoration: underline;
+                    }
+                </style>
+
+                <script>
+                    function toggleAboutSidebar() {
+                        const sidebar = document.getElementById('aboutSidebar');
+                        sidebar.classList.toggle('active');
+                    }
+                </script>
+                <!-- Interior Card -->
+                <div class="property-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="property-image">
+                        <img src="interior-1.jpg" alt="Luxury Interior">
+                    </div>
+                    <div class="property-info">
+                        <h3>Uncompromising Quality</h3>
+                        <p>Elevate your living experience with our thoughtfully designed rental properties. Discover the perfect blend of modern amenities.</p>
+                        <button class="inquire-btn">Inquire Today</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <div class="cta-section" data-aos="fade-up">
+        <h2>Unleash Your Rental Potential</h2>
+        <p>Unlock the door to your dream rental with our exceptional collection of properties. Combining unparalleled design, cutting-edge amenities, and personalized service, we empower you to find the perfect living space that elevates your lifestyle.</p>
+        <button class="explore-btn">Explore Now</button>
+    </div>
+    <!-- FAQ Section -->
+    <section class="faq-section" data-aos="fade-up">
+        <h2 style="text-align: center; color: #FFD700; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <h3>❓ What is Housing Lord?</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>💡 A trusted rental platform connecting tenants with verified property owners.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <h3>❓ What are the service fees?</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>💰 One month's rent split between tenant & owner.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleAnswer(this)">
+                    <h3>❓ How do I list my property?</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>🏡 Register on our platform, add details, and let us do the rest!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .faq-section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 215, 0, 0.12);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            color: #FFD700;
+            font-size: 1.1rem;
+        }
+
+        .arrow {
+            color: #FFD700;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 1rem 0;
+            color: white;
+        }
+
+        .faq-item.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+    </style>
+
+    <script>
+        function toggleAnswer(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+    </script>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <style>
+            .contact-section {
+                padding: 4rem 2rem;
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white;
+            }
+
+            .contact-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .contact-info {
+                padding: 2rem;
+            }
+
+            .contact-info h2 {
+                color: #FFD700;
+                margin-bottom: 2rem;
+                font-size: 2rem;
+            }
+
+            .contact-details {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .contact-item {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                font-size: 1.1rem;
+            }
+
+            .contact-item i {
+                color: #FFD700;
+                font-size: 1.5rem;
+            }
+
+            .social-links {
+                margin-top: 2rem;
+                display: flex;
+                gap: 1.5rem;
+            }
+
+            .social-links a {
+                color: #FFD700;
+                text-decoration: none;
+                transition: transform 0.3s ease;
+            }
+
+            .social-links a:hover {
+                transform: translateY(-3px);
+            }
+
+            .contact-form {
+                padding: 2rem;
+                background: rgba(255, 215, 0, 0.1);
+                border-radius: 10px;
+            }
+
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                color: #FFD700;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 0.8rem;
+                border: 1px solid #FFD700;
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                border-radius: 5px;
+            }
+
+            .submit-btn {
+                background: #FFD700;
+                color: black;
+                padding: 1rem 2rem;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: transform 0.3s ease;
+            }
+
+            .submit-btn:hover {
+                transform: translateY(-2px);
+            }
+
+            @media (max-width: 768px) {
+                .contact-container {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+
+        <div class="contact-container" data-aos="fade-up">
+            <div class="contact-info">
+                <h2>Get in Touch – We're Here to Help!</h2>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i>🏠</i>
+                        <span>Housing Lord, Bhubaneswar, Odisha</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>📞</i>
+                        <span>[Your Contact]</span>
+                    </div>
+                    <div class="contact-item">
+                        <i>✉</i>
+                        <span>[Your Email]</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" target="_blank">Facebook</a>
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+   
+
+    <!-- AOS Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS with smoother settings
+        AOS.init({
+            duration: 1200, // slightly longer duration
+            easing: 'ease-out-cubic', // smoother easing function
+            once: false, // animate every time the element enters the viewport
+            mirror: true, // animations can happen in reverse when scrolling up
+            anchorPlacement: 'top-bottom', // trigger when top of element hits bottom of viewport
+        });
+
+        // GSAP animations for hero section
+        document.addEventListener('DOMContentLoaded', function() {
+            const tl = gsap.timeline();
+            
+            // Title animation
+            tl.to("#hero-title", {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            }, 0.5);
+            
+            // Subtitle animation
+            tl.to("#hero-subtitle", {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            }, 1);
+            
+            // Buttons animation
+            tl.to(".hero-buttons", {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power3.out"
+            }, 1.5);
+
+            // Scroll animation for about section
+            gsap.from("#about-section", {
+                scrollTrigger: {
+                    trigger: "#about-section",
+                    start: "top 80%",
+                    end: "top 30%",
+                    scrub: 1,
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            });
+        });
+    </script>
+    
+
+    <!-- Add this right after the logo img tag in the header -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about-housing-lord">About Us</a></li>
+            <li><a href="#properties">Properties</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><button class="nav-button">Book Now</button></li>
+        </ul>
+    </nav>
+
+    <!-- Add this JavaScript before the closing body tag -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const toggleIcon = menuToggle.querySelector('i');
+
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+                
+                // Toggle between bars and times icon
+                toggleIcon.classList.toggle('fa-bars');
+                toggleIcon.classList.toggle('fa-times');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.main-nav a, .nav-button').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    toggleIcon.classList.add('fa-bars');
+                    toggleIcon.classList.remove('fa-times');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && mainNav.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    toggleIcon.classList.add('fa-bars');
+                    toggleIcon.classList.remove('fa-times');
+                }
+            });
+        });
+    </script>
+
+    <!-- Add this button before the closing body tag -->
+    <button class="back-to-top" onclick="scrollToTop()" title="Back to top">↑</button>
+     <footer class="footer">
+        <p>&copy; 2025 Housing Lord | All rights reserved.</p>
+    </footer>
+</body>
+</html>

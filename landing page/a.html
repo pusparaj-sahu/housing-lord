@@ -1,0 +1,242 @@
+<section class="how-it-works">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        
+        <div class="process-map">
+            <div class="tenant-path">
+                <h3>For Tenants</h3>
+                <div class="steps">
+                    <div class="step" data-aos="fade-right">
+                        <div class="step-icon">🏡</div>
+                        <div class="step-content">
+                            <h4>Step 1</h4>
+                            <p>Browse verified properties</p>
+                        </div>
+                        <div class="connector"></div>
+                    </div>
+
+                    <div class="step" data-aos="fade-right" data-aos-delay="100">
+                        <div class="step-icon">📞</div>
+                        <div class="step-content">
+                            <h4>Step 2</h4>
+                            <p>Connect with property owners</p>
+                        </div>
+                        <div class="connector"></div>
+                    </div>
+
+                    <div class="step" data-aos="fade-right" data-aos-delay="200">
+                        <div class="step-icon">✅</div>
+                        <div class="step-content">
+                            <h4>Step 3</h4>
+                            <p>Complete legal formalities</p>
+                        </div>
+                        <div class="connector"></div>
+                    </div>
+
+                    <div class="step" data-aos="fade-right" data-aos-delay="300">
+                        <div class="step-icon">🎉</div>
+                        <div class="step-content">
+                            <h4>Step 4</h4>
+                            <p>Move in hassle-free</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="owner-path">
+                <h3>For Owners</h3>
+                <div class="steps">
+                    <div class="step" data-aos="fade-left">
+                        <div class="step-icon">📌</div>
+                        <div class="step-content">
+                            <h4>Step 1</h4>
+                            <p>List your property</p>
+                        </div>
+                        <div class="connector"></div>
+                    </div>
+
+                    <div class="step" data-aos="fade-left" data-aos-delay="100">
+                        <div class="step-icon">🔍</div>
+                        <div class="step-content">
+                            <h4>Step 2</h4>
+                            <p>Get tenant verification</p>
+                        </div>
+                        <div class="connector"></div>
+                    </div>
+
+                    <div class="step" data-aos="fade-left" data-aos-delay="200">
+                        <div class="step-icon">💰</div>
+                        <div class="step-content">
+                            <h4>Step 3</h4>
+                            <p>Set the best rental price</p>
+                        </div>
+                        <div class="connector"></div>
+                    </div>
+
+                    <div class="step" data-aos="fade-left" data-aos-delay="300">
+                        <div class="step-icon">🤝</div>
+                        <div class="step-content">
+                            <h4>Step 4</h4>
+                            <p>Rent out stress-free</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-button" data-aos="fade-up">
+            <button class="start-journey-btn">Start Your Journey Today!</button>
+        </div>
+    </div>
+
+    <style>
+        .how-it-works {
+            padding: 4rem 0;
+            background: #000;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #FFD700;
+        }
+
+        .process-map {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .tenant-path, .owner-path {
+            flex: 1;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #FFD700;
+        }
+
+        .steps {
+            position: relative;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .step-icon {
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 1.2rem;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+        }
+
+        .step-content {
+            flex: 1;
+            transition: all 0.4s ease;
+        }
+
+        .step-content h4 {
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            transition: transform 0.3s ease;
+            font-weight: 600;
+        }
+
+        .step-content p {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+            line-height: 1.4;
+            margin-top: 0.5rem;
+        }
+
+        /* New hover animations */
+        .step:hover {
+            background: rgba(255, 215, 0, 0.05);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .step:hover .step-icon {
+            transform: rotate(360deg) scale(1.2);
+            background: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .step:hover .step-content h4 {
+            transform: translateX(10px);
+            color: #FFF;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .step:hover .step-content p {
+            transform: translateX(10px);
+            color: #FFD700;
+        }
+
+        .step:hover .connector {
+            background: linear-gradient(to bottom, #FFD700, transparent);
+            width: 3px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .connector {
+            position: absolute;
+            left: 2.5rem;
+            bottom: -2rem;
+            width: 2px;
+            height: 2rem;
+            background: #FFD700;
+            transition: all 0.4s ease;
+        }
+
+        .cta-button {
+            text-align: center;
+        }
+
+        .start-journey-btn {
+            background: #FFD700;
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .start-journey-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .process-map {
+                flex-direction: column;
+            }
+            
+            .tenant-path, .owner-path {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</section>

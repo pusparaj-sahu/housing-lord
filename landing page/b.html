@@ -1,0 +1,233 @@
+<section class="pricing-section">
+    <div class="pricing-card" data-aos="fade-up">
+        <h2>Simple & Transparent Pricing</h2>
+        <div class="pricing-details">
+            <div class="main-fee">
+                <h3>Service Fee</h3>
+                <p class="highlight">One Month's Rent</p>
+                <div class="split-details">
+                    <div class="split-item">
+                        <span class="icon">👥</span>
+                        <p>15 days' rent from tenant</p>
+                    </div>
+                    <div class="split-item">
+                        <span class="icon">🏠</span>
+                        <p>15 days' rent from owner</p>
+                    </div>
+                </div>
+            </div>
+            <div class="additional-services">
+                <h3>Additional Services</h3>
+                <div class="service-item">
+                    <span class="icon">📜</span>
+                    <p>Rental Agreement Assistance</p>
+                    <small>(Varies by location)</small>
+                </div>
+                <div class="service-item">
+                    <span class="icon">🔍</span>
+                    <p>Police Verification</p>
+                    <small>(As per regulations)</small>
+                </div>
+            </div>
+            <button class="cta-btn" onclick="toggleSidebar()">No Hidden Costs – Just Professional Service!</button>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="pricingSidebar">
+        <div class="sidebar-content">
+            <button class="close-btn" onclick="toggleSidebar()">×</button>
+            <h3>Detailed Pricing Information</h3>
+            
+            <div class="detailed-section">
+                <h4>Service Fee Breakdown</h4>
+                <p>Our one-month rent service fee is split equally between tenant and owner to ensure fairness and commitment from both parties.</p>
+                <ul>
+                    <li>Tenant's Share: 15 days' rent</li>
+                    <li>Owner's Share: 15 days' rent</li>
+                </ul>
+            </div>
+
+            <div class="detailed-section">
+                <h4>Rental Agreement Service</h4>
+                <p>We provide comprehensive legal documentation support:</p>
+                <ul>
+                    <li>Draft preparation</li>
+                    <li>Legal verification</li>
+                    <li>Digital signatures</li>
+                    <li>Document registration assistance</li>
+                </ul>
+            </div>
+
+            <div class="detailed-section">
+                <h4>Police Verification</h4>
+                <p>Complete assistance in:</p>
+                <ul>
+                    <li>Document collection</li>
+                    <li>Application processing</li>
+                    <li>Follow-up with authorities</li>
+                    <li>Status tracking</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .pricing-section {
+            padding: 4rem 2rem;
+            background: #111111;
+            position: relative;
+        }
+
+        .pricing-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .pricing-card h2 {
+            color: #FFD700;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .main-fee, .additional-services {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .highlight {
+            color: #FFD700;
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .split-details {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+        }
+
+        .split-item, .service-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+        .cta-btn {
+            background: #FFD700;
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            right: -100%;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: #1a1a1a;
+            padding: 2rem;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-content {
+            color: #fff;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            background: none;
+            border: none;
+            color: #FFD700;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .detailed-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        .detailed-section h4 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .detailed-section ul {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        .detailed-section ul li {
+            margin: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .detailed-section ul li:before {
+            content: "•";
+            color: #FFD700;
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+            }
+
+            .split-details {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('pricingSidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</section>
