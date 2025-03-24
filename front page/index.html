@@ -1,11 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Basic Meta Information -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Housing Lord</title>
-    <!-- TailwindCSS CDN -->
-   <link rel="stylesheet" href="index.css">
+    
+    <!-- SEO Meta Tags -->
+    <title>Housing Lord - Odisha's Trusted Rental Service | Find & List Properties</title>
+    <meta name="title" content="Housing Lord - Odisha's Trusted Rental Service | Find & List Properties">
+    <meta name="description" content="Find your dream rental home or list your property in Odisha. Housing Lord connects verified tenants with property owners. Simple, transparent, and hassle-free rentals with professional service.">
+    <meta name="keywords" content="rental service odisha, property rental bhubaneswar, house for rent, property listing, tenant verification, rental agreement, housing lord">
+    
+    <!-- Social Media Meta Tags -->
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://housinglord.com/">
+    <meta property="og:title" content="Housing Lord - Odisha's Trusted Rental Service">
+    <meta property="og:description" content="Find your dream rental home or list your property in Odisha. Housing Lord connects verified tenants with property owners.">
+    <meta property="og:image" content="logo.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://housinglord.com/">
+    <meta property="twitter:title" content="Housing Lord - Odisha's Trusted Rental Service">
+    <meta property="twitter:description" content="Find your dream rental home or list your property in Odisha. Housing Lord connects verified tenants with property owners.">
+    <meta property="twitter:image" content="logo.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.jpg">
+    
+    <!-- Performance Optimizations -->
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="logo.jpg" as="image">
+    <link rel="preload" href="hero_image.jpeg" as="image">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" as="style">
+    
+    <!-- Preconnect to External Domains -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Stylesheets -->
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="index.css">
+    
+    <!-- Deferred CSS Loading -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Defer Non-Critical JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" defer></script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "Housing Lord",
+        "description": "Odisha's trusted rental service connecting house owners with verified tenants",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bhubaneswar",
+            "addressRegion": "Odisha",
+            "addressCountry": "IN"
+        },
+        "image": "logo.jpg",
+        "url": "https://housinglord.com",
+        "telephone": "[Your Contact]",
+        "priceRange": "₹₹",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ],
+            "opens": "09:00",
+            "closes": "18:00"
+        }
+    }
+    </script>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://housinglord.com/">
+    
     <!-- AOS Animation Library -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <!-- Google Font for Housing Lord theme -->
@@ -16,6 +100,7 @@
     <!-- Add Font Awesome for the toggle icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        
         /* Update the html and body styles */
         html, body {
             margin: 0;
@@ -50,7 +135,7 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 100;
+            z-index: 1000;  /* Increased z-index to be higher than nav bar */
             width: 120px;
             height: 120px;
             transition: all 0.3s ease;
@@ -58,6 +143,8 @@
             border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            background-color: #000;  /* Added black background */
+            padding: 5px;  /* Added padding to create a border effect */
         }
 
         .logo:hover {
@@ -345,9 +432,13 @@
         /* Navigation Styles */
         .main-nav {
             position: fixed;
-            top: 20px;
-            right: 30px;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
+            background-color: #000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .main-nav ul {
@@ -356,7 +447,8 @@
             list-style: none;
             align-items: center;
             margin: 0;
-            padding: 0;
+            padding: 0 2rem;
+            justify-content: flex-end;
         }
 
         .main-nav a {
@@ -438,65 +530,72 @@
                 height: 100vh;
                 background: rgba(0, 0, 0, 0.95);
                 padding: 80px 2rem 2rem;
+                z-index: 1000;
             }
 
             .main-nav.active {
                 display: block;
-                animation: slideIn 0.3s ease-out;
-            }
-
-            @keyframes slideIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
             }
 
             .main-nav ul {
                 flex-direction: column;
-                gap: 2rem;
+                gap: 1rem;
                 align-items: center;
+                padding: 0;
+                margin: 0;
             }
 
             .main-nav li {
                 width: 100%;
                 text-align: center;
                 opacity: 0;
-                animation: fadeIn 0.5s ease-out forwards;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
             }
 
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+            .main-nav.active li {
+                opacity: 1;
+                transform: translateY(0);
             }
 
-            .main-nav li:nth-child(1) { animation-delay: 0.1s; }
-            .main-nav li:nth-child(2) { animation-delay: 0.2s; }
-            .main-nav li:nth-child(3) { animation-delay: 0.3s; }
-            .main-nav li:nth-child(4) { animation-delay: 0.4s; }
-            .main-nav li:nth-child(5) { animation-delay: 0.5s; }
-            .main-nav li:nth-child(6) { animation-delay: 0.6s; }
+            .main-nav li:nth-child(1) { transition-delay: 0.1s; }
+            .main-nav li:nth-child(2) { transition-delay: 0.2s; }
+            .main-nav li:nth-child(3) { transition-delay: 0.3s; }
+            .main-nav li:nth-child(4) { transition-delay: 0.4s; }
+            .main-nav li:nth-child(5) { transition-delay: 0.5s; }
+            .main-nav li:nth-child(6) { transition-delay: 0.6s; }
 
             .main-nav a {
                 font-size: 1.2rem;
                 display: block;
                 padding: 1rem;
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .main-nav a:hover {
+                color: #FFD700;
+                transform: translateX(10px);
             }
 
             .nav-button {
                 width: 100%;
                 max-width: 200px;
                 margin-top: 1rem;
+                background: #FFD700;
+                color: #000;
+                border: none;
+                padding: 0.8rem 1.5rem;
+                border-radius: 25px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: all 0.3s ease;
+            }
+
+            .nav-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
             }
 
             /* Toggle Icon Animation */
@@ -903,12 +1002,16 @@
                 height: 100vh;
                 position: relative;
                 overflow: hidden;
+                margin: 0;
+                padding: 0;
             }
 
             .hero-image-container {
                 width: 100%;
                 height: 100%;
                 position: relative;
+                margin: 0;
+                padding: 0;
             }
 
             .hero-image {
@@ -916,6 +1019,9 @@
                 height: 100%;
                 object-fit: cover;
                 transition: transform 0.3s ease;
+                display: block;
+                margin: 0;
+                padding: 0;
             }
 
             .hero-image-container:hover .hero-image {
@@ -935,19 +1041,52 @@
                 align-items: center;
                 color: white;
                 text-align: center;
+                padding: 0 20px;
             }
 
             .hero-image-overlay h2 {
-                font-size: 3rem;
+                font-size: clamp(2rem, 5vw, 3rem);
                 margin-bottom: 1rem;
                 color: #FFD700;
                 text-transform: uppercase;
+                line-height: 1.2;
             }
 
             .hero-image-overlay p {
-                font-size: 1.5rem;
+                font-size: clamp(1rem, 2vw, 1.5rem);
                 max-width: 800px;
                 margin: 0 auto;
+                line-height: 1.4;
+            }
+
+            /* Responsive styles */
+            @media (max-width: 768px) {
+                .hero-image-section {
+                    height: 80vh;
+                }
+
+                .hero-image-overlay {
+                    padding: 0 15px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .hero-image-section {
+                    height: 70vh;
+                }
+
+                .hero-image-overlay {
+                    padding: 0 10px;
+                }
+            }
+
+            /* Ensure full width on all devices */
+            @media (min-width: 1920px) {
+                .hero-image-section {
+                    width: 100vw;
+                    margin-left: calc(-50vw + 50%);
+                    margin-right: calc(-50vw + 50%);
+                }
             }
         </style>
     </section>
@@ -2065,64 +2204,133 @@
    
 
     <!-- AOS Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
     <script>
-        // Initialize AOS with smoother settings
-        AOS.init({
-            duration: 1200, // slightly longer duration
-            easing: 'ease-out-cubic', // smoother easing function
-            once: false, // animate every time the element enters the viewport
-            mirror: true, // animations can happen in reverse when scrolling up
-            anchorPlacement: 'top-bottom', // trigger when top of element hits bottom of viewport
-        });
-
-        // GSAP animations for hero section
+        // Initialize AOS with optimized settings
         document.addEventListener('DOMContentLoaded', function() {
-            const tl = gsap.timeline();
-            
-            // Title animation
-            tl.to("#hero-title", {
-                opacity: 1,
-                y: 0,
-                duration: 1.5,
-                ease: "power3.out"
-            }, 0.5);
-            
-            // Subtitle animation
-            tl.to("#hero-subtitle", {
-                opacity: 1,
-                y: 0,
-                duration: 1.5,
-                ease: "power3.out"
-            }, 1);
-            
-            // Buttons animation
-            tl.to(".hero-buttons", {
-                opacity: 1,
-                y: 0,
-                duration: 1.2,
-                ease: "power3.out"
-            }, 1.5);
+            AOS.init({
+                duration: 1200,
+                easing: 'ease-out-cubic',
+                once: true, // Changed to true for better performance
+                mirror: false, // Changed to false for better performance
+                anchorPlacement: 'top-bottom',
+                disable: window.innerWidth < 768 // Disable on mobile for better performance
+            });
 
-            // Scroll animation for about section
+            // Optimized GSAP animations
+            const tl = gsap.timeline({
+                defaults: { ease: "power3.out" }
+            });
+            
+            // Batch animations for better performance
+            tl.to(["#hero-title", "#hero-subtitle", ".hero-buttons"], {
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                stagger: 0.5
+            });
+
+            // Optimized scroll animation
             gsap.from("#about-section", {
                 scrollTrigger: {
                     trigger: "#about-section",
                     start: "top 80%",
                     end: "top 30%",
                     scrub: 1,
+                    toggleActions: "play none none reverse"
                 },
                 y: 50,
                 opacity: 0,
-                duration: 1.5,
-                ease: "power3.out"
+                duration: 1.5
             });
+        });
+
+        // Optimized menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const toggleIcon = menuToggle.querySelector('i');
+
+            // Debounced click handler
+            let timeout;
+            menuToggle.addEventListener('click', function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    this.classList.toggle('active');
+                    mainNav.classList.toggle('active');
+                    toggleIcon.classList.toggle('fa-bars');
+                    toggleIcon.classList.toggle('fa-times');
+                }, 100);
+            });
+
+            // Optimized event listeners
+            const closeMenu = () => {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                toggleIcon.classList.add('fa-bars');
+                toggleIcon.classList.remove('fa-times');
+            };
+
+            // Use event delegation for better performance
+            document.querySelector('.main-nav').addEventListener('click', (e) => {
+                if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+                    closeMenu();
+                }
+            });
+
+            // Optimized outside click handler
+            document.addEventListener('click', (e) => {
+                if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && mainNav.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        });
+
+        // Optimized scroll to top functionality
+        const backToTop = document.querySelector('.back-to-top');
+        let scrollTimeout;
+
+        window.addEventListener('scroll', () => {
+            if (scrollTimeout) {
+                window.cancelAnimationFrame(scrollTimeout);
+            }
+            scrollTimeout = window.requestAnimationFrame(() => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Optimized image loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
         });
     </script>
     
 
-    <!-- Add this right after the logo img tag in the header -->
-    <button class="menu-toggle" aria-label="Toggle Menu">
+    <!-- Navigation HTML -->
+    <button class="menu-toggle" aria-label="Toggle Menu" type="button">
         <i class="fas fa-bars"></i>
     </button>
 
@@ -2133,47 +2341,240 @@
             <li><a href="#properties">Properties</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact Us</a></li>
-            <li><button class="nav-button">Book Now</button></li>
+            <li><button class="nav-button" type="button">Book Now</button></li>
         </ul>
     </nav>
 
-    <!-- Add this JavaScript before the closing body tag -->
+    <!-- Mobile Navigation Styles -->
+    <style>
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block !important;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 1001;
+                background: none;
+                border: none;
+                color: white;  /* Changed from #FFD700 to white */
+                font-size: 24px;
+                cursor: pointer;
+                padding: 10px;
+                transition: all 0.3s ease;
+            }
+
+            .menu-toggle:hover {
+                color: #FFD700;  /* Added hover effect to change to gold on hover */
+            }
+
+            .menu-toggle.active i {
+                transform: rotate(90deg);
+                color: #FFD700;  /* Change to gold when active */
+            }
+
+            /* Rest of the mobile navigation styles remain the same */
+            .main-nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                padding: 80px 2rem 2rem;
+                z-index: 1000;
+            }
+
+            .main-nav.active {
+                display: block !important;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+                padding: 0;
+                margin: 0;
+            }
+
+            .main-nav li {
+                width: 100%;
+                text-align: center;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.3s ease;
+            }
+
+            .main-nav.active li {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .main-nav li:nth-child(1) { transition-delay: 0.1s; }
+            .main-nav li:nth-child(2) { transition-delay: 0.2s; }
+            .main-nav li:nth-child(3) { transition-delay: 0.3s; }
+            .main-nav li:nth-child(4) { transition-delay: 0.4s; }
+            .main-nav li:nth-child(5) { transition-delay: 0.5s; }
+            .main-nav li:nth-child(6) { transition-delay: 0.6s; }
+
+            .main-nav a {
+                font-size: 1.2rem;
+                display: block;
+                padding: 1rem;
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .main-nav a:hover {
+                color: #FFD700;
+                transform: translateX(10px);
+            }
+
+            .nav-button {
+                width: 100%;
+                max-width: 200px;
+                margin-top: 1rem;
+                background: #FFD700;
+                color: #000;
+                border: none;
+                padding: 0.8rem 1.5rem;
+                border-radius: 25px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: all 0.3s ease;
+            }
+
+            .nav-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            }
+        }
+    </style>
+
+    <!-- Navigation JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        // Wait for the DOM to be fully loaded
+        window.addEventListener('load', function() {
+            // Get the menu toggle button and navigation
             const menuToggle = document.querySelector('.menu-toggle');
             const mainNav = document.querySelector('.main-nav');
             const toggleIcon = menuToggle.querySelector('i');
 
-            menuToggle.addEventListener('click', function() {
-                this.classList.toggle('active');
+            // Function to toggle the menu
+            function toggleMenu() {
+                console.log('Toggle button clicked'); // Debug log
                 mainNav.classList.toggle('active');
+                menuToggle.classList.toggle('active');
                 
-                // Toggle between bars and times icon
-                toggleIcon.classList.toggle('fa-bars');
-                toggleIcon.classList.toggle('fa-times');
+                if (mainNav.classList.contains('active')) {
+                    toggleIcon.classList.remove('fa-bars');
+                    toggleIcon.classList.add('fa-times');
+                } else {
+                    toggleIcon.classList.remove('fa-times');
+                    toggleIcon.classList.add('fa-bars');
+                }
+            }
+
+            // Add click event listener to the toggle button
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleMenu();
             });
 
-            // Close menu when clicking a link
-            document.querySelectorAll('.main-nav a, .nav-button').forEach(link => {
-                link.addEventListener('click', () => {
-                    menuToggle.classList.remove('active');
-                    mainNav.classList.remove('active');
-                    toggleIcon.classList.add('fa-bars');
-                    toggleIcon.classList.remove('fa-times');
+            // Add touch event listener for mobile devices
+            menuToggle.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                toggleMenu();
+            }, { passive: false });
+
+            // Close menu when clicking links
+            const menuLinks = document.querySelectorAll('.main-nav a, .nav-button');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (mainNav.classList.contains('active')) {
+                        toggleMenu();
+                    }
                 });
             });
 
             // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && mainNav.classList.contains('active')) {
-                    menuToggle.classList.remove('active');
-                    mainNav.classList.remove('active');
-                    toggleIcon.classList.add('fa-bars');
-                    toggleIcon.classList.remove('fa-times');
+            document.addEventListener('click', function(e) {
+                if (mainNav.classList.contains('active') && 
+                    !mainNav.contains(e.target) && 
+                    !menuToggle.contains(e.target)) {
+                    toggleMenu();
+                }
+            });
+
+            // Close menu on window resize if open
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && mainNav.classList.contains('active')) {
+                    toggleMenu();
                 }
             });
         });
     </script>
+
+    <!-- Production Optimizations -->
+    <script>
+        // Performance Optimizations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lazy load images
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+
+            // Optimize scroll performance
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                if (scrollTimeout) {
+                    window.cancelAnimationFrame(scrollTimeout);
+                }
+                scrollTimeout = window.requestAnimationFrame(() => {
+                    // Your scroll handling code here
+                });
+            });
+
+            // Add loading state
+            document.body.classList.add('loaded');
+        });
+
+        // Error Handling
+        window.addEventListener('error', function(e) {
+            console.error('Script error:', e);
+        });
+    </script>
+
+    <!-- Production Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Housing Lord">
+
+    <!-- Production Resource Hints -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+    <!-- Production Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data:; font-src 'self' https: data:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 
     <!-- Add this button before the closing body tag -->
     <button class="back-to-top" onclick="scrollToTop()" title="Back to top">↑</button>
