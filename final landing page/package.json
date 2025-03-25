@@ -1,5 +1,5 @@
 {
-  "name": "front-page",
+  "name": "final-landing-page",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,12 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "clean": "rimraf node_modules/.vite && rimraf dist",
-    "dev:clean": "npm run clean && npm run dev"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/fiber": "^9.1.0",
     "@tailwindcss/vite": "^4.0.15",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

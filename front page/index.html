@@ -607,28 +607,48 @@
         /* Add a back to top button */
         .back-to-top {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;  /* Increased from 20px */
+            right: 30px;   /* Increased from 20px */
             background-color: #FFD700;
             color: #000;
-            width: 40px;
-            height: 40px;
+            width: 50px;   /* Increased from 40px */
+            height: 50px;  /* Increased from 40px */
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
             opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 24px;  /* Increased from 20px */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             z-index: 1000;
         }
 
         .back-to-top.visible {
             opacity: 1;
+            visibility: visible;
         }
 
         .back-to-top:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
+            background-color: #fff;
+            color: #FFD700;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            width: 55px;  /* Slight increase on hover */
+            height: 55px; /* Slight increase on hover */
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 25px;
+                right: 25px;
+                font-size: 22px;
+            }
         }
 
         .tenant-path h3, .owner-path h3 {
@@ -2578,8 +2598,421 @@
 
     <!-- Add this button before the closing body tag -->
     <button class="back-to-top" onclick="scrollToTop()" title="Back to top">↑</button>
+     <!-- Footer Section -->
      <footer class="footer">
-        <p>&copy; 2025 Housing Lord | All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#properties">Properties</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#rental">Rental Services</a></li>
+                    <li><a href="#listing">Property Listing</a></li>
+                    <li><a href="#verification">Tenant Verification</a></li>
+                    <li><a href="#documentation">Documentation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Housing Lord | All rights reserved.</p>
+        </div>
     </footer>
+
+    <style>
+    /* Footer Styles */
+    .footer {
+        background-color: #111;
+        color: #fff;
+        padding: 4rem 0 0 0;
+        position: relative;
+        width: 100%;
+        margin-top: 4rem;
+    }
+
+    .footer-content {
+        max-width: 900px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4rem;
+        padding: 0 2rem;
+    }
+
+    .footer-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-section h3 {
+        color: #FFD700;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-section ul li a {
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        font-size: 0.95rem;
+    }
+
+    .footer-section ul li a:hover {
+        color: #FFD700;
+        transform: translateX(5px);
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .social-link {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 215, 0, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .social-link:hover {
+        color: #FFD700;
+        transform: translateY(-3px);
+        background: rgba(255, 215, 0, 0.2);
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding: 1.5rem 0;
+        margin-top: 3rem;
+        background: #000;
+    }
+
+    .footer-bottom p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #888;
+    }
+
+    @media (max-width: 1024px) {
+        .footer-content {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer {
+            padding: 3rem 0 0 0;
+        }
+
+        .footer-content {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .footer-section {
+            align-items: center;
+        }
+
+        .footer-section ul {
+            text-align: center;
+        }
+
+        .social-links {
+            justify-content: center;
+        }
+
+        .footer-section ul li a:hover {
+            transform: none;
+        }
+    }
+    </style>
+
+    <script>
+    // Scroll to top on page refresh
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
+
+    // Toggle Menu and Sidebar Interaction
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        const toggleIcon = menuToggle.querySelector('i');
+        const pricingSidebar = document.getElementById('pricingSidebar');
+        const aboutSidebar = document.getElementById('aboutSidebar');
+
+        function toggleMenu() {
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            toggleIcon.classList.toggle('fa-bars');
+            toggleIcon.classList.toggle('fa-times');
+        }
+
+        // Hide menu toggle when sidebars are open
+        function updateMenuToggleVisibility() {
+            const isSidebarOpen = pricingSidebar.classList.contains('active') || 
+                                aboutSidebar.classList.contains('active');
+            menuToggle.style.opacity = isSidebarOpen ? '0' : '1';
+            menuToggle.style.visibility = isSidebarOpen ? 'hidden' : 'visible';
+            menuToggle.style.pointerEvents = isSidebarOpen ? 'none' : 'auto';
+        }
+
+        // Update original togglePricingSidebar function
+        window.togglePricingSidebar = function() {
+            pricingSidebar.classList.toggle('active');
+            updateMenuToggleVisibility();
+        };
+
+        // Update original toggleAboutSidebar function
+        window.toggleAboutSidebar = function() {
+            aboutSidebar.classList.toggle('active');
+            updateMenuToggleVisibility();
+        };
+
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (mainNav.classList.contains('active') && 
+                !mainNav.contains(e.target) && 
+                !menuToggle.contains(e.target)) {
+                toggleMenu();
+            }
+        });
+
+        // Initialize menu toggle visibility
+        updateMenuToggleVisibility();
+    });
+
+    // Production Optimizations
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lazy load images
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => imageObserver.observe(img));
+
+        // Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Optimize scroll performance
+        const optimizedScroll = debounce(() => {
+            // Your scroll handling code here
+        }, 150);
+
+        window.addEventListener('scroll', optimizedScroll);
+    });
+    </script>
+
+    <style>
+    /* Update inquire button styles */
+    .inquire-btn {
+        display: block;
+        margin: 1rem auto;
+        background-color: #FFD700;
+        color: #000;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Scroll to Top Button Styles */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;  /* Increased from 20px */
+        right: 30px;   /* Increased from 20px */
+        background-color: #FFD700;
+        color: #000;
+        width: 50px;   /* Increased from 40px */
+        height: 50px;  /* Increased from 40px */
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        border: none;
+        font-size: 24px;  /* Increased from 20px */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        transform: translateY(-3px);
+        background-color: #fff;
+        color: #FFD700;
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        width: 55px;  /* Slight increase on hover */
+        height: 55px; /* Slight increase on hover */
+    }
+
+    @media (max-width: 768px) {
+        .back-to-top {
+            width: 45px;
+            height: 45px;
+            bottom: 25px;
+            right: 25px;
+            font-size: 22px;
+        }
+    }
+
+    /* Production optimizations */
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Critical rendering path optimization */
+    body {
+        text-rendering: optimizeLegibility;
+    }
+
+    /* Performance optimizations */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+    </style>
+
+    <script>
+    // Scroll to top on page load/refresh - Enhanced version
+    document.addEventListener('DOMContentLoaded', function() {
+        // Force scroll to top immediately when page starts loading
+        window.scrollTo(0, 0);
+        
+        // Disable browser's automatic scroll restoration
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        }
+        
+        // Force scroll to top when page is fully loaded
+        window.onload = function() {
+            setTimeout(function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'auto'
+                });
+            }, 0);
+        };
+
+        // Handle back/forward navigation
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.scrollTo(0, 0);
+            }
+        };
+
+        // Back to top button functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        function toggleBackToTopButton() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        }
+
+        // Optimized scroll event listener with requestAnimationFrame
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    toggleBackToTopButton();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Smooth scroll to top when button is clicked
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+    </script>
 </body>
 </html>

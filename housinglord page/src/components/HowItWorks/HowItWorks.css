@@ -1,0 +1,268 @@
+.how-it-works {
+    padding: 4rem 0;
+    background: #111111;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #FFD700;
+    background: #1a1a1a;
+    padding: 1rem 0;
+    border-radius: 8px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
+}
+
+.process-map {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.tenant-path, .owner-path {
+    flex: 1;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #FFD700;
+}
+
+.steps {
+    position: relative;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 1.2rem;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+}
+
+.step-content {
+    flex: 1;
+    transition: all 0.4s ease;
+}
+
+.step-content h4 {
+    color: #FFD700;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+    font-weight: 600;
+}
+
+.step-content p {
+    font-size: 1.3rem;
+    transition: transform 0.3s ease;
+    line-height: 1.4;
+    margin-top: 0.5rem;
+}
+
+/* Hover animations */
+.step:hover {
+    background: rgba(255, 215, 0, 0.05);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.1);
+}
+
+.step:hover .step-icon {
+    transform: scale(1.2);
+    background: rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.step:hover .step-content h4 {
+    transform: translateX(10px);
+    color: #FFF;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.step:hover .step-content p {
+    transform: translateX(10px);
+    color: #FFD700;
+}
+
+.step:hover .connector {
+    background: linear-gradient(to bottom, #FFD700, transparent);
+    width: 3px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.connector {
+    position: absolute;
+    left: 2.5rem;
+    bottom: -2rem;
+    width: 2px;
+    height: 2rem;
+    background: #FFD700;
+    transition: all 0.4s ease;
+}
+
+.cta-button {
+    text-align: center;
+}
+
+.start-journey-btn {
+    background: #FFD700;
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+}
+
+.start-journey-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .section-title {
+        width: 90%;
+        font-size: 2.2rem;
+    }
+
+    .step-icon {
+        font-size: 2rem;
+        padding: 1rem;
+    }
+
+    .step-content h4 {
+        font-size: 1.5rem;
+    }
+
+    .step-content p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .process-map {
+        flex-direction: column;
+    }
+
+    .tenant-path, .owner-path {
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        width: 95%;
+        font-size: 2rem;
+        padding: 0.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    .step {
+        padding: 0.8rem;
+    }
+
+    .step-icon {
+        font-size: 1.8rem;
+        padding: 0.8rem;
+        margin-right: 1rem;
+    }
+
+    .step-content h4 {
+        font-size: 1.3rem;
+    }
+
+    .step-content p {
+        font-size: 1rem;
+    }
+
+    .start-journey-btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 0.8rem 1.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    .step-icon {
+        font-size: 1.5rem;
+        padding: 0.7rem;
+    }
+
+    .step-content h4 {
+        font-size: 1.2rem;
+    }
+
+    .step-content p {
+        font-size: 0.9rem;
+    }
+
+    .start-journey-btn {
+        font-size: 1rem;
+        padding: 0.7rem 1.2rem;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    .step:hover {
+        transform: none;
+        background: none;
+        box-shadow: none;
+    }
+
+    .step:hover .step-icon {
+        transform: none;
+        background: rgba(255, 215, 0, 0.1);
+        box-shadow: none;
+    }
+
+    .step:hover .step-content h4,
+    .step:hover .step-content p {
+        transform: none;
+        color: inherit;
+    }
+
+    .step:hover .connector {
+        background: #FFD700;
+        width: 2px;
+        box-shadow: none;
+    }
+} 

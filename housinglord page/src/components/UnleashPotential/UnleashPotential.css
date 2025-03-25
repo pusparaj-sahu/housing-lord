@@ -1,0 +1,133 @@
+.unleash-potential {
+  background-color: #111111;
+  padding: 80px 0;
+  color: #fff;
+  text-align: center;
+}
+
+.unleash-potential .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.unleash-potential h2 {
+  font-size: 2.5rem;
+  color: #FFD700;
+  margin-bottom: 30px;
+  text-align: center;
+  background: #1a1a1a;
+  padding: 1rem 0;
+  border-radius: 8px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.1);
+}
+
+.unleash-potential p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.explore-btn {
+  background: #FFD700;
+  color: #000;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.explore-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.explore-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.explore-btn:hover::before {
+  left: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .unleash-potential h2 {
+    font-size: 2.2rem;
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .unleash-potential {
+    padding: 60px 0;
+  }
+
+  .unleash-potential h2 {
+    font-size: 2rem;
+    width: 95%;
+    padding: 0.8rem;
+  }
+
+  .unleash-potential p {
+    font-size: 1.1rem;
+  }
+
+  .explore-btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .unleash-potential h2 {
+    font-size: 1.8rem;
+  }
+
+  .unleash-potential p {
+    font-size: 1rem;
+  }
+
+  .explore-btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  .explore-btn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .explore-btn::before {
+    display: none;
+  }
+} 
